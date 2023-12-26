@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Pinnacle Partners | Job-Board</title>
+    <style>
+
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+      * {
+          font-family: 'Inter', sans-serif;
+      }
+
+      .btn:focus {
+          outline: none !important;
+      }
+      .btn {
+          outline: none !important;
+
+      }
+      body {
+          min-height: 100vh;
+      }
+
+      .btn-primary:hover {
+          color: #fff;
+          opacity: .9 !important;
+      }
+
+
+      #scrollToTopBtn {
+          background-color: #B2283D !important;
+      }
+      #scrollToTopBtn:hover {
+          opacity: .9 !important;
+          background-color: #B2283D !important;
+      }
+      #scrollToTopBtn:focus {
+          outline: none !important;
+          box-shadow: none !important;
+      }
+      #home-button {
+          background-color: #B2283D;
+
+      }
+
+      #home-button:focus {
+          outline: none !important;
+
+      }
+
+      /* Remove the outline for all input types including text area, select, etc. */
+      .form-control:focus {
+          outline: none !important;
+          box-shadow: none !important;
+      }
+
+      /* If you have specific input types to target, you can do so explicitly */
+      input[type="text"]:focus,
+      input[type="password"]:focus,
+      textarea:focus,
+      select:focus {
+          outline: none !important;
+          box-shadow: none !important;
+      }
+
+
+        ul {
+          padding-left: 0 !important;
+        }
+
+        p {
+          margin: 0 !important;
+        }
+
+        a{
+          text-decoration: none;
+          color: #fff;
+        }
+        a{
+          text-decoration: none;
+          color: #fff;
+        }
+        a:hover{
+          text-decoration: none;
+          color: #fff;
+        }
+
+      .btn:hover{
+      opacity: .9;
+      }
+
+      .btn-secondary {
+          background-color: #B2283D !important;
+          margin-top: -1rem;
+        }
+
+        #search-button {
+          background-color: #706d6d !important;
+        }
+
+
+
+        #search-button:focus {
+          outline: none !important;
+          box-shadow: none !important;
+        }
+
+
+
+           #trackerpublishlist {
+                  padding-top: 10px;
+                  margin: 0px;
+                  background-color: #fff;
+                  overflow-y: hidden;
+                  vertical-align: text-top;
+                  min-height: 100vh;
+              }
+              #trackerpublishlist ul {
+                  padding-left: .5rem !important;
+                  margin: 0px;
+                  position: relative;
+              }
+              .border-bottom {
+                  margin-top: 4rem;
+                  border-bottom: 1px solid rgba(159, 159, 159, .2) !important;
+
+              }
+
+              #trackerpublishlist ul li {
+                  position: relative;
+                  padding: 0px;
+                  margin: .8rem 0 0;
+              }
+              #trackerpublishlist ul li.publish_description {
+                  display: inline-block;
+
+              }
+
+               #trackerpublishlist ul li ul li {
+                  position: relative;
+                  padding: 0px;
+                  margin: 0px;
+                  display: list-item !important;
+                  list-style-type: disc !important;
+
+              }
+               #trackerpublishlist ul li ul li.publish_salaryto {
+                list-style: none !important;
+
+              }
+
+              #trackerpublishlist ul li ul li.publish_consultantname {
+                 font-weight: 400;
+                 color: #6c757d!important;
+                 font-size: .9rem;
+                 display: block !important;
+                 margin-top: .3rem;
+              }
+              #trackerpublishlist ul li ul li.publish_publishdate {
+                display: block !important;
+              }
+
+          .publish_description ul li {
+          list-style-type: disc !important;
+
+          }
+
+
+
+
+          #trackerpublishlist ul li ul li.publish_title {
+              position: relative;
+              color: #B2283D;
+              padding: 0px;
+              margin-top: 2rem;
+              margin-bottom: 1rem;
+              list-style: none;
+              display: block !important;
+
+              font-size: 1.6rem;
+              font-weight: 700;
+          }
+
+      #trackerpublishlist ul li.flex-items{
+       display: inline-block !important;
+       margin-top: 1rem;
+      }
+
+      #trackerpublishlist ul li.publish_link{
+       float: right;
+      }
+
+
+       @media screen and (max-width: 600px) {
+          #trackerpublishlist ul li.publish_link{
+          width: 100% !important;
+
+          margin-top: 1.5rem;
+      }
+      }
+
+               #trackerpublishlist ul li ul li.publish_location {
+                  position: relative;
+                  padding: 0px;
+                  margin: 0px;
+                  list-style: none;
+                  display: block !important;
+
+              }
+               #trackerpublishlist ul li ul li.publish_department {
+                  position: relative;
+                  padding: 0px;
+                  margin: 0px;
+                  /* list-style: none; */
+                  display: block !important;
+
+              }
+
+              .accordion-header button {
+                  color: red;
+                  display: inline-block;
+              }
+
+              .no-results {
+                  color: red;
+                  margin-top: 20px;
+              }
+
+              .h50 {
+                  height: 50px;
+              }
+
+              .banner {
+
+         background-color: #B2283D;
+          background-position: 50% 0px;
+          background-attachment: scroll;
+          background-position: 50% 0;
+          background-repeat: no-repeat;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+          z-index: 1;
+          position: relative;
+      }
+
+      .banner h2 {
+          font-size: 32px;
+          color: white;
+      }
+
+      .btn-primary {
+          color: #fff;
+          background-color: #706d6d;
+          border: 0;
+
+      }
+
+      .accordion-content {
+         display: none;
+         z-index: 500;
+         margin: 1rem 0;
+
+      }
+
+      .accordion-header {
+          cursor: pointer;
+          display: inline-block;
+
+      }
+
+      .border-top {
+          margin-top: 4rem;
+
+      }
+
+      .border-top:first-child {
+          border-top: none !important;
+      } */
+    </style>
+  </head>
+  <body>
+    <div class="main-div">
+      <!-- Banner -->
+      <section
+        class="banner p-4 d-flex justify-content-center align-items-center flex-column"
+      >
+        <h2 class="text-center my-4">Pinnacle Partners Jobs</h2>
+        <div class="container">
+          <form id="search-form" class="my-auto mx-auto w-100 p-3">
+            <div class="d-flex flex-column flex-md-column flex-lg-row gap-md-3">
+              <div class="mb-2 w-100">
+                <input
+                  type="text"
+                  class="form-control h50"
+                  id="search-title"
+                  placeholder="Job title"
+                />
+              </div>
+              <div class="mb-2 w-100">
+                <select id="search-location" class="form-select h50 text-muted">
+                  <option value="">All locations</option>
+                  <option value="butler, indiana">Butler, Indiana</option>
+                  <option value="elkhart, indiana">Elkhart, Indiana</option>
+                  <option value="indianapolis, in">
+                    Indianapolis, Indiana
+                  </option>
+                  <option value="monroe, in">Monroe, Indiana</option>
+                  <option value="monroe, indiana">Monroe, Indiana</option>
+                  <option value="monticello, indiana">
+                    Monticello, Indiana
+                  </option>
+                  <option value="mt comfort, indiana">
+                    Mt Comfort, Indiana
+                  </option>
+                  <option value="rochester, indiana">Rochester, Indiana</option>
+                  <option value="south bend, indiana">
+                    South Bend, Indiana
+                  </option>
+                </select>
+              </div>
+              <div class="mb-2 w-100">
+                <select
+                  id="search-department"
+                  class="form-select h50 text-muted"
+                >
+                  <option value="">All departments</option>
+                  <option value="staffing-us acct">Accounting</option>
+                  <option value="staffing-us admin">Administration</option>
+                  <option value="staffing-us eng/mfg">
+                    Engineering and Manufacturing
+                  </option>
+                  <option value="staffing-us it">Information Technology</option>
+                </select>
+              </div>
+              <button
+                type="submit"
+                id="search-button"
+                class="btn btn-lg btn-primary btn-block h50 d-flex align-items-center justify-content-center"
+              >
+                <i class="fas fa-search me-1"></i>Search
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Results -->
+
+      <section class="results px-4">
+        <div class="container">
+          <div class="my-3 w-100 ps-1 pt-2">
+            <div class="p-3">
+              <button
+                id="home-button"
+                class="btn btn-lg btn-primary btn-block home"
+              >
+                <i class="fas fa-home"></i>
+              </button>
+            </div>
+
+            <div id="trmsjobs">
+              <ul id="trackerpublishlist"></ul>
+            </div>
+
+            <div id="no-results" class="no-results" style="display: none">
+              No jobs currently available.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <button
+        id="scrollToTopBtn"
+        class="btn btn-primary"
+        style="display: none; position: fixed; bottom: 60px; right: 20px"
+      >
+        <i class="fas fa-arrow-up"></i>
+      </button>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.js"></script>
+
+    <script type="text/javascript">
+      var options = {
+        fields:
+          "title,location,salaryto,publishdate,department,consultantname,description,linkregister",
+        filters: "",
+        sorts: "",
+      };
+
+      $(document).ready(function () {
+        // Load initial data
+        $.ajax({
+          url: "https://evoportalus.tracker-rms.com/pinnaclepartners/jobs",
+          data: options,
+          success: function (data) {
+            $("#trmsjobs").html(data);
+
+            $(document).ready(function () {
+              // Iterate over each publish_description item
+              $("#trackerpublishlist .publish_description").each(function () {
+                // Wrap the content of each li in a div with class 'accordion-content'
+                $(this)
+                  .children()
+                  .wrapAll('<div class="accordion-content"></div>');
+
+                // Prepend a new div as the accordion header with an underlined <a> tag
+                $(this).prepend(
+                  '<div class="accordion-header"><a href="#" class="accordion-toggle">Read More <span class="toggle-sign">+</span></a></div>'
+                );
+              });
+
+              // Add click event for the accordion headers
+              $(".accordion-header").click(function (e) {
+                e.preventDefault(); // Prevent the default anchor tag behavior
+
+                // Toggle the next accordion content
+                var content = $(this).next(".accordion-content");
+                content.slideToggle();
+
+                // Toggle the sign between "+" and "-"
+                var toggleSign = $(this).find(".toggle-sign");
+                toggleSign.text(toggleSign.text() === "+" ? "-" : "+");
+
+                // Optionally, close other open accordion sections
+                $(".accordion-content").not(content).slideUp();
+                $(".toggle-sign").not(toggleSign).text("+");
+              });
+
+              // Initial CSS setup for accordion (optional, can be done in CSS file)
+              $(".accordion-content").hide(); // Hide all contents initially
+              $(".accordion-header a").css({
+                textDecoration: "underline",
+                cursor: "pointer",
+                color: "#00308F",
+              });
+            });
+
+            $(document).ready(function () {
+              // Add 'flex-items' class to 'publish_description' and 'publish_link' list items
+              $(".publish_description, .publish_link").addClass("flex-items");
+            });
+
+            $(document).ready(function () {
+              // Select all 'publish_link' list items
+              $("li.publish_link").each(function () {
+                // Get all 'a' tags inside the current li
+                var links = $(this).find("a").detach();
+
+                // Create a new button element
+                var button = $(
+                  '<button class="btn btn-secondary"></button>'
+                ).append(links); // Append the 'a' tags to the button
+
+                // Replace the content of the list item with the new button
+                $(this).empty().append(button);
+              });
+            });
+
+            $(document).ready(function () {
+              // Create a new div element with class 'border-bottom'
+              var borderDiv = $("<div></div>").addClass("border-bottom");
+
+              // Append the new div after the 'trackerpublishlist' div
+              $("#trackerpublishlist ul li.publish_link").after(borderDiv);
+            });
+
+            $(document).ready(function () {
+              // Iterate over each element with the class 'publish_salaryto'
+              $("li.publish_salaryto").each(function () {
+                // Check if the element is not empty (excluding whitespace)
+                if ($.trim($(this).text()) !== "") {
+                  // Prepend the text 'Up to: ' to the element
+                  $(this).prepend("Up to: ");
+                }
+              });
+            });
+            $(document).ready(function () {
+              // Iterate over each element with the class 'publish_consultname'
+              $("li.publish_consultantname").each(function () {
+                // Prepend the text 'Up to: ' to the element
+                $(this).prepend("by: ");
+              });
+            });
+          },
+        });
+
+        // Handle form submission for search
+        $("#search-form").on("submit", function (event) {
+          event.preventDefault();
+        });
+
+        $(document).ready(function () {
+          // Create a new div element with class 'items'
+          var newDiv = $("<div></div>").addClass("items");
+
+          // Append the new div to a container in your HTML, for example, to a div with class 'main-div'
+          $(".main-div").append(newDiv);
+        });
+
+        // Function to perform search
+        function search() {
+          var titleValue = $("#search-title").val().toLowerCase();
+          var locationValue = $("#search-location").val().toLowerCase();
+          var departmentValue = $("#search-department").val().toLowerCase();
+          var hasResults = false;
+
+          $("#trackerpublishlist li").each(function () {
+            var text = $(this).text().toLowerCase();
+            var matchesTitle =
+              titleValue === "" || text.indexOf(titleValue) > -1;
+            var matchesLocation =
+              locationValue === "" || text.indexOf(locationValue) > -1;
+            var matchesDepartment =
+              departmentValue === "" || text.indexOf(departmentValue) > -1;
+            var isVisible =
+              matchesTitle && matchesLocation && matchesDepartment;
+            $(this).toggle(isVisible);
+            if (isVisible) hasResults = true;
+          });
+
+          // Toggle message and listings visibility
+          $("#no-results").toggle(!hasResults);
+          $("#trmsjobs").toggle(hasResults);
+
+          // Add border-top divs above each publish_title list item after search results are loaded
+          // $('.publish_title').each(function() {
+          //     // Check if the border-top div is not already added
+          //     if (!$(this).prev().hasClass('border-top')) {
+          //         var borderDiv = $('<div></div>').addClass('border-top');
+          //         $(this).before(borderDiv);
+          //     }
+          // });
+        }
+
+        // Event listener for form submission
+        $("#search-form").on("submit", function (event) {
+          event.preventDefault();
+          search();
+        });
+
+        $("#home-button").click(function () {
+          window.location.href = "index.html"; // Replace with your actual home page URL
+        });
+        $(document).ready(function () {
+          // Check for scroll event
+          $(window).scroll(function () {
+            if ($(this).scrollTop() > 300) {
+              // 200px from top
+              $("#scrollToTopBtn").fadeIn();
+            } else {
+              $("#scrollToTopBtn").fadeOut();
+            }
+          });
+
+          // Click event to scroll to top
+          $("#scrollToTopBtn").click(function () {
+            $("html, body").animate({ scrollTop: 0 }, 100);
+            return false;
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
