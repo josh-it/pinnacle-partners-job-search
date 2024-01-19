@@ -51,15 +51,15 @@
           outline: none !important;
           box-shadow: none !important;
       }
-      #home-button {
+      /* #home-button {
           background-color: #B2283D;
 
-      }
+      } */
 
-      #home-button:focus {
+      /* #home-button:focus {
           outline: none !important;
 
-      }
+      } */
 
       /* Remove the outline for all input types including text area, select, etc. */
       .form-control:focus {
@@ -311,23 +311,7 @@
               <div class="mb-2 w-100">
                 <select id="search-location" class="form-select h50 text-muted">
                   <option value="">All locations</option>
-                  <option value="butler, indiana">Butler, Indiana</option>
-                  <option value="elkhart, indiana">Elkhart, Indiana</option>
-                  <option value="indianapolis, in">
-                    Indianapolis, Indiana
-                  </option>
-                  <option value="monroe, in">Monroe, Indiana</option>
-                  <option value="monroe, indiana">Monroe, Indiana</option>
-                  <option value="monticello, indiana">
-                    Monticello, Indiana
-                  </option>
-                  <option value="mt comfort, indiana">
-                    Mt Comfort, Indiana
-                  </option>
-                  <option value="rochester, indiana">Rochester, Indiana</option>
-                  <option value="south bend, indiana">
-                    South Bend, Indiana
-                  </option>
+                  <option value=""></option>
                 </select>
               </div>
               <div class="mb-2 w-100">
@@ -362,12 +346,12 @@
         <div class="container">
           <div class="my-3 w-100 ps-1 pt-2">
             <div class="p-3">
-              <button
+              <!-- <button
                 id="home-button"
                 class="btn btn-lg btn-primary btn-block home"
               >
                 <i class="fas fa-home"></i>
-              </button>
+              </button> -->
             </div>
 
             <div id="trmsjobs">
@@ -396,7 +380,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.js"></script>
 
     <script type="text/javascript">
       var options = {
@@ -407,13 +390,64 @@
       };
 
       $(document).ready(function () {
+        // Function to transform the text based on the length of the second word
+        function transformText(str) {
+          return str
+            .toLowerCase()
+            .split(" ")
+            .map((word, index) => {
+              // For the second word, check length and transform accordingly
+              if (index === 1 && word.length < 3) {
+                return word.toUpperCase();
+              } else {
+                // Capitalize the first letter of other words
+                return word.charAt(0).toUpperCase() + word.slice(1);
+              }
+            })
+            .join(" ");
+        }
+
+        // Function to populate the location dropdown
+        function populateLocationDropdown() {
+          var locations = new Set(); // Use a Set to store unique locations
+
+          // Assuming each job listing has a 'publish_location' class
+          $("#trackerpublishlist .publish_location").each(function () {
+            var locationText = $(this).text().trim();
+            if (locationText) {
+              locations.add(locationText.toLowerCase()); // Add location to the Set in lowercase to ensure uniqueness
+            }
+          });
+
+          // Clear existing options in the dropdown (except the first placeholder option)
+          $("#search-location").find("option:not(:first)").remove();
+
+          // Populate the dropdown with transformed locations
+          locations.forEach(function (location) {
+            var transformedLocation = transformText(location);
+            $("#search-location").append(
+              new Option(transformedLocation, location)
+            );
+          });
+        }
+
         // Load initial data
         $.ajax({
           url: "https://evoportalus.tracker-rms.com/pinnaclepartners/jobs",
           data: options,
           success: function (data) {
             $("#trmsjobs").html(data);
+            // Populate location dropdown after data is loaded
+            populateLocationDropdown();
 
+            // Function to capitalize the first letter of each word and lowercase the rest
+
+            // Apply the text transformation to existing .publish_location elements
+            $("#trackerpublishlist .publish_location").each(function () {
+              var originalText = $(this).text();
+              var transformedText = transformText(originalText);
+              $(this).text(transformedText);
+            });
             $(document).ready(function () {
               // Iterate over each publish_description item
               $("#trackerpublishlist .publish_description").each(function () {
@@ -540,15 +574,6 @@
           // Toggle message and listings visibility
           $("#no-results").toggle(!hasResults);
           $("#trmsjobs").toggle(hasResults);
-
-          // Add border-top divs above each publish_title list item after search results are loaded
-          // $('.publish_title').each(function() {
-          //     // Check if the border-top div is not already added
-          //     if (!$(this).prev().hasClass('border-top')) {
-          //         var borderDiv = $('<div></div>').addClass('border-top');
-          //         $(this).before(borderDiv);
-          //     }
-          // });
         }
 
         // Event listener for form submission
@@ -557,9 +582,9 @@
           search();
         });
 
-        $("#home-button").click(function () {
+        /*$("#home-button").click(function () {
           window.location.href = "index.html";
-        });
+        });*/
         $(document).ready(function () {
           // Check for scroll event
           $(window).scroll(function () {
